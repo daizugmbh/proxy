@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const { getData } = require("./requests/get")
 const { postData } = require("./requests/post")
+const { wrongEndpoint } = require("./errors")
 
 app.get("/", (req, res) => getData(req, res))
 app.post("/", (req, res) => postData(req, res))
