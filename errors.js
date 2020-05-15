@@ -6,3 +6,15 @@ exports.wrongEndpoint = (req, res) => {
     },
   })
 }
+
+exports.serverInRequest = (req, res, next) => {
+  if ("server" in req.query) {
+    next()
+  } else {
+    res
+      .status(400)
+      .json({
+        error: { message: "You have to provide a server in your request." },
+      })
+  }
+}
