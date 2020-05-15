@@ -5,6 +5,7 @@ const { getData } = require("./requests/get")
 const { postData } = require("./requests/post")
 const { putData } = require("./requests/put")
 const { patchData } = require("./requests/patch")
+const { deleteData } = require("./requests/delete")
 const { wrongEndpoint } = require("./errors")
 
 app.get("/", (req, res) => getData(req, res))
