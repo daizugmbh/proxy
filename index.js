@@ -4,6 +4,7 @@ const port = 3000
 const { getData } = require("./requests/get")
 const { postData } = require("./requests/post")
 const { putData } = require("./requests/put")
+const { patchData } = require("./requests/patch")
 const { wrongEndpoint } = require("./errors")
 
 app.get("/", (req, res) => getData(req, res))
