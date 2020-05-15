@@ -18,13 +18,27 @@ exports.serverInRequest = (req, res, next) => {
 }
 
 exports.wrongArgType = (req, res, next) => {
-  const { query } = req
-  const { server } = query
+  const { server } = req.query
   if (typeof server === "string") {
     next()
   } else {
     res
       .status(400)
       .json({ error: { message: "The server has to be a string" } })
+  }
+}
+
+exports.checkAddress = (req, res, next) => {
+  const { server } = req.query
+  if (server.startsWith("http://") || server.startsWith("https://")) {
+    next()
+  } else {
+    res
+      .status(400)
+      .json({
+        error: {
+          message: "The server has to start with 'http://' or 'https://'.",
+        },
+      })
   }
 }
